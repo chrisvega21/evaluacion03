@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación 03</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function limpiar() {
+            document.getElementById("prac1").value = "";
+            document.getElementById("prac2").value = "";
+            document.getElementById("prac3").value = "";
+            document.getElementById("prom1").value = "";
+            document.getElementById("exam").value = "";
+            document.getElementById("promf").value = "";
+            document.getElementById("txtres").value = "";
+        }
+
+        function imprimir() {
+            window.print();
+        }
+
+        function calcular() {
+            let prac1 = document.getElementById("prac1").value;
+            prac1 = parseInt(prac1);
+            let prac2 = document.getElementById("prac2").value;
+            prac2 = parseInt(prac2);
+            let prac3 = document.getElementById("prac3").value;
+            prac3 = parseInt(prac3);
+            let exam = document.getElementById("exam").value;
+            exam = parseInt(exam);
+            let suma = ((prac1 + prac2 + prac3) / 3).toFixed(2);
+
+            document.getElementById("prom1").value = suma;
+            let prom1 = document.getElementById("prom1").value;
+            let promfinal = ((parseInt(prom1) + 2 * exam) / 3).toFixed(2);
+            document.getElementById("promf").value = promfinal;
+
+            if (promfinal >= 13 && promfinal < 21) {
+                document.getElementById("txtres").value = "Aprobado";
+                document.getElementById("txtres").style.color = "blue";
+                document.getElementById("txtres").style.fontWeight = "bold";
+            } else if (promfinal >= 0 && promfinal < 13) {
+                document.getElementById("txtres").value = "Desaprobado";
+                document.getElementById("txtres").style.color = "red";
+                document.getElementById("txtres").style.fontWeight = "bold";
+            } else {
+                document.getElementById("txtres").value = "No válido";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="Logo">
+        <h3>Lenguaje para el Desarrollo y Soporte de Sistemas</h3>
+    </header>
+    <main>
+        <div>
+            <img src="img/banner-tecnologia.jpg" alt="Banner Tecnología">
+        </div>
+        <h1>Promedio final del Curso</h1>
+        <table>
+            <tr>
+                <td>Práctica 01</td>
+                <td>
+                    <input type="number" id="prac1" max="20">
+                </td>
+            </tr>
+            <tr>
+                <td>Práctica 02</td>
+                <td>
+                    <input type="number" id="prac2" max="20">
+                </td>
+            </tr>
+            <tr>
+                <td>Práctica 03</td>
+                <td>
+                    <input type="number" id="prac3" max="20">
+                </td>
+            </tr>
+            <tr>
+                <td>Promedio PP</td>
+                <td>
+                    <input type="number" disabled id="prom1">
+                </td>
+            </tr>
+            <tr>
+                <td>Ex. Final</td>
+                <td>
+                    <input type="number" id="exam" max="20">
+                </td>
+            </tr>
+            <tr>
+                <td>Promedio Final</td>
+                <td>
+                    <input type="number" disabled id="promf">
+                </td>
+            </tr>
+            <tr>
+                <td>Resultado</td>
+                <td>
+                    <input type="text" disabled id="txtres">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="calcular();">Calcular</button>
+                    <button onclick="limpiar();">Limpiar</button>
+                    <button onclick="imprimir();">Imprimir</button>
+                </td>
+            </tr>
+        </table>
+    </main>
+    <footer>
+        Autor: Remigio Huarcaya Almeyda
+    </footer>
+</body>
+</html>
